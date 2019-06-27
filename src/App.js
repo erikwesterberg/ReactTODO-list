@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from './components/header'
 import Todos from './components/todos';
-import './App.css';
+import addtodo from './components/addtodo';
 
 class App extends Component {
   state = {
@@ -38,15 +38,31 @@ class App extends Component {
     this.setState({ todos: [...this.state.todos.filter(todo => todo.id !== id)]
     });  
   }
+
+    addTodo = (title) => {
+      const newTodo = {
+        id:4,
+        title,
+        completed: false
+      }
+      
+      this.setState({ todos: [...this.state.todos.newTodo]})
+    }
+  
   render() {
      return (
       <div className="App">
-        <Header />
-      <Todos todos={this.state.todos} markComplete={this.markComplete}
-      delTodo={this.delTodo} />
-    </div>
+          <div className="container">
+           <Header />
+           <addtodo addTodo={this.addTodo}/>
+           <Todos todos={this.state.todos} markComplete={this.markComplete}
+            delTodo={this.delTodo} />
+        </div>
+       </div> 
+    
   );
  }
 }
+
 
 export default App;
